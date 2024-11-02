@@ -1,0 +1,112 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  <title>
+    Contact me
+    |
+      koding king 
+    |
+    Darokastech
+  </title>
+  <script src="https://kit.fontawesome.com/92d5d6bb5a.js" crossorigin="anonymous"></script>
+</head>
+
+<!--css-->
+
+<style>
+body{
+  background: goldenrod;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+input{
+  outline: none;
+}
+
+.mydiv{
+  background: white;
+  color: gold;
+  height: 200px;
+  padding: 30px;
+  width: 200px;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+  border-radius: 10px;
+}
+
+.mydiv .mytext{
+  font-size: 25px;
+}
+</style>
+
+<!--html-->
+
+<form method="POST" id="form" class="mydiv">
+    <a href="../auth/mindex.html">
+        <i class="fa-solid fa-arrow-left-long fa-2xl"></i>
+    </a>
+    <h1 class="mytext">
+      Contact me..
+    </h1>
+    <input type="hidden" name="access_key" value="ba8b0626-81b9-4ad5-bfe2-d397a46e88b9">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email(Optional)">
+    <textarea name="message" placeholder="Your Message"required></textarea>
+    <button type="submit">Submit</button>
+    <div id="result"></div>
+
+</form>
+
+<!--javascript-->
+
+<script>
+const form = document.getElementById('form');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function(e) {
+    const formData = new FormData(form);
+    e.preventDefault();
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.innerHTML = "Please wait..."
+
+    fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                result.innerHTML = json.message;
+            } else {
+                console.log(response);
+                result.innerHTML = json.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+        })
+        .then(function() {
+            form.reset();
+            setTimeout(() => {
+                result.style.display = "none";
+            }, 3000);
+        });
+});
+</script>
+</html>
+<!--BY FOLLOW ME FOR MORE!-->

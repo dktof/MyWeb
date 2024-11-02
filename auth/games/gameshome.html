@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/92d5d6bb5a.js" crossorigin="anonymous"></script>
+    <style>
+        #searchbar {
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        input[type=text] {
+            width: 30%;
+            -webkit-transition: width 0.15s ease-in-out;
+            transition: width 0.15s ease-in-out;
+        }
+
+        /* When the input field gets focus,
+           change its width to 100% */
+        input[type=text]:focus {
+            width: 70%;
+        }
+
+        #list {
+            font-size: 1.5em;
+            list-style: none;
+            margin: auto;
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        * {
+            text-align: center;
+            background: blue;
+        }
+
+        button {
+            border-color: green;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../mindex.html">
+        <i class="fa-solid fa-arrow-left-long fa-2xl" style="color: white; margin-bottom: 0px;"></i>
+    </a>
+    <h1>Here are our games</h1>
+
+    <!-- input tag -->
+    <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Search here..">
+    <br>
+    <br>
+
+    <span class="games">
+        <a href="./pong.html">
+            <img src="./gamesimg/Screen Shot 2023-09-24 at 16.21.44.png" alt="" height="200px" width="200px" name="pong | table tennis">
+        </a>
+    </span>
+
+    <span class="games">
+        <a href="./Tic Tac Toe in JavaScript - CodingNepal/index.html">
+            <img src="./gamesimg/tictactoe.png" alt="" height="200px" width="200px" name="tictactoe">
+        </a>
+    </span>
+
+    <span class="games">
+        <a href="./Rock Paper Scissors/index.html">
+            <img src="./gamesimg/rockpapersz.png" alt="" height="200px" width="200px" name="rockpaperscissors | rock paper scissors">
+        </a>
+    </span>
+
+
+    <br>
+
+
+    <span class="games">
+        <a href="./Word Scramble Game/index.html">
+            <img src="./gamesimg/wordscramble.png" alt="" height="200px" width="200px" name="wordscramble | word scramble | Wordguess | Word guess">
+        </a>
+    </span>
+
+    <span class="games">
+        <a href="./Quiz Application with Timer/index.html">
+            <img src="./gamesimg/Quiz.png" alt="" height="200px" width="200px" name="Quiz | quiz game">
+        </a>
+    </span>
+
+    <span class="games">
+        <a href="./Memory Cards Game [Demo 1]/index.html">
+            <img src="./gamesimg/easy card guess.png" alt="" height="200px" width="200px" name="Memory card game | Memorycardgame">
+        </a>
+    </span>
+    </section>
+</body>
+<script>
+    // JavaScript code
+    function search_animal() {
+        let input = document.getElementById('searchbar').value
+        input = input.toLowerCase();
+        let x = document.getElementsByClassName('games');
+
+        for (i = 0; i < x.length; i++) {
+            if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                x[i].style.display = "none";
+            }
+            else {
+                x[i].style.display = "";
+            }
+        }
+    }
+</script>
+
+</html>
